@@ -227,10 +227,14 @@ def calc_dim(mx,gender):
             calc_norm(data[i],norm[idx][0],norm[idx][1],norm[idx][2]+"\t"+norm[idx][3])
 
 if(__name__=="__main__"):
-    if(len(sys.argv)>1): infname = sys.argv[1]
-    else:                infname = "大五人格（OCEAN）测试结果.txt"
+    if(len(sys.argv)>2): 
+        gender  = sys.argv[1].lower()
+        infname = sys.argv[2]
+    else:
+        print("Usage:\n\tpython 大五人格（OCEAN）分数计算程序.py <gender> <answer file>")
+        sys.exit(0)
     inf    = open(infname,'r')
-    gender = "m" #在此定义性别
+    print("Gender=","male" if gender=="m" else "female")
     # 文件格式定义：tsv格式，无空行，按照题号顺序一行存储一题的自测评分
     s = [0] # 注意，s的下标是题号，然而题号没有0，因此在index为0的地方需要占位
     for line in inf:
